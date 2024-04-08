@@ -6,10 +6,9 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 
-import { loginUser } from '../../services/user/login';
-import { User } from '../../types/userDTO';
-import { styles } from './styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { loginUser } from '../../../services/user/login';
+import { UserLogin } from '../../../types/userLoginDTO';
+import { styles } from '../styles';
 
 
 function Login() {
@@ -17,7 +16,7 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    const userData: User = {
+    const userData: UserLogin = {
       login,
       password
     };
