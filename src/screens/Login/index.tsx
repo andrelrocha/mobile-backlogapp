@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/react-in-jsx-scope */
 import {
   Text,
   TextInput,
@@ -11,6 +9,7 @@ import { useState } from 'react';
 import { loginUser } from '../../services/user/login';
 import { User } from '../../types/userDTO';
 import { styles } from './styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function Login() {
