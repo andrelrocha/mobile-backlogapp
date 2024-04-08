@@ -1,0 +1,28 @@
+npm install -g react-native-cli
+npx react-native@latest init nomedoapp
+PS C:\Users\andre.rocha\Desktop\mobile\orgsHooks> 
+$env:NODE_OPTIONS = "--openssl-legacy-provider"
+npx react-native start
+npx react-native run-android
+
+””””””””””””””””””””””””””””
+https://reactnative.dev/docs/environment-setup
+””””””””””””””””””””””””””””
+
+tem que criar variavel de ambiente ANDROID_HOME
+tem que ter o jdk instalado como path JAVA_HOME
+tem que ter o node instalado
+tem que adicionar a variavel de ambiente do user com o 
+"path" para o endereco de ANDROID_HOME com "/platform-tools "
+
+
+
+baixar o chocolatey
+Set-ExecutionPolicy AllSigned
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco - para testar se instalou
+choco install -y nodejs-lts openjdk11
+
+
+ATENÇÃO!!!! O SETUP DO ANDROID STUDIO E DAS VARIAVEIS DE AMBIENTE DEVEM SER FEITOS
+ANTES DE INSTALAR O react-native-cli {npm uninstall -g react-native-cli @react-native-community/cli}
