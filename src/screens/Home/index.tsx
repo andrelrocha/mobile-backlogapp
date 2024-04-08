@@ -3,10 +3,14 @@ import React from "react";
 import Header from '../../components/header';
 import { View } from "react-native";
 
-export default function Home() {
-    return (
-        <View>
-            <Header />
-        </View>
-    );
+class Home extends React.Component{
+    render() {
+        return (
+            <View>
+                <Header />
+            </View>
+        );
+    }
 }
+
+export default Home;

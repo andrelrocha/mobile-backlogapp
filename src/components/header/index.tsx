@@ -4,13 +4,15 @@ import { Text, Image, View, StyleSheet } from 'react-native';
 import logo from '../../assets/controller-xbox.png';
 import { colors } from '../../utils/colors';
 
-export default function Header() {
-  return (
-    <View style={styles.container}>
-      <Image source={logo} style={styles.logo} />
-      <Text style={styles.title}>Backlog APP</Text>
-    </View>
-  );
+class Header extends React.Component {
+  render () {
+    return (
+      <View style={styles.container}>
+        <Image source={logo} style={styles.logo} />
+        <Text style={styles.title}>Backlog APP</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -33,3 +35,5 @@ const styles = StyleSheet.create({
     color: colors.black
   }
 });
+
+export default Header;

@@ -5,14 +5,17 @@ import {
   View
 } from 'react-native';
 import { useState } from 'react';
+import React from 'react';
 
 import { loginUser } from '../../../services/user/login';
 import { UserLogin } from '../../../types/userLoginDTO';
 import { styles } from '../styles';
 
 
-function Login() {
-  const [login, setLogin] = useState('');
+class Login extends React.Component {
+
+  render() {
+    const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
@@ -22,7 +25,6 @@ function Login() {
     };
     loginUser(userData);
   };
-
 
   return (
     <View style={styles.container}>
@@ -60,8 +62,7 @@ function Login() {
       </View>
     </View>
   );
+  }
 }
-
-
 
 export default Login;
