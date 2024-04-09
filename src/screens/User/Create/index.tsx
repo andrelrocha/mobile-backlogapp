@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import MaskInput, { Masks } from 'react-native-mask-input';
+import DatePicker from "react-native-date-picker";
 import { styles } from "../styles";
 import { UserCreate } from "../../../types/userCreateDTO";
 import { createUser } from "../../../services/user/create";
@@ -11,9 +12,15 @@ function Create() {
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [birthday, setBirthday] = useState(new Date());
+  const [birthdaySelected, setBirthdaySelected] = useState(false);
+  const [open, setOpen] = useState(false)
 
-  const formattedBirthday = birthday.split('/').reverse().join('-');
+  const formattedMonth = String(birthday.getMonth() + 1).padStart(2, '0');
+  const formattedDay = String(birthday.getDate()).padStart(2, '0');
+  const formattedBirthdayApi = `${birthday.getFullYear()}-${formattedMonth}-${formattedDay}`;
+  const formattedBirthday = `${formattedDay}/${formattedMonth}/${birthday.getFullYear()}`;
+
 
   async function handleCreateUser() {
     const userData: UserCreate = {
@@ -22,7 +29,7 @@ function Create() {
       name,
       cpf,
       phone,
-      birthday: formattedBirthday
+      birthday: formattedBirthdayApi
     };
     
     try {
@@ -66,13 +73,30 @@ function Create() {
         mask={['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
         keyboardType="phone-pad"
       />
-      <MaskInput
+
+      <TextInput
         placeholder="Digite sua data de nascimento"
         style={styles.input}
-        value={birthday}
-        onChangeText={(masked, unmasked) => setBirthday(masked)}
-        mask={Masks.DATE_DDMMYYYY}
+        value={birthdaySelected ? formattedBirthday : ''}
+        onPressIn={() => setOpen(true)}
       />
+
+      <DatePicker
+        modal
+        open={open}
+        date={birthday}
+        onConfirm={(date) => {
+            setOpen(false);
+            setBirthday(date);
+            setBirthdaySelected(true);
+          }
+        }
+        onCancel={() => {
+          setOpen(false)
+        }}
+        mode="date"
+      />
+
       <TextInput
         placeholder="Digite seu login (email)"
         style={styles.input}
