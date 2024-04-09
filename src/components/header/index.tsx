@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, Image, View, StyleSheet } from 'react-native';
 import logo from '../../assets/controller-xbox.png';
 import { colors } from '../../utils/colors';
+import { styles } from './styles';
 
 class Header extends React.Component {
   render () {
@@ -15,25 +16,6 @@ class Header extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    paddingHorizontal: 10,
-    paddingTop: 10,
-    backgroundColor: colors.sage
-  },
-  logo: {
-    width: 80,
-    height: 80,
-    marginRight: 10
-  },
-  title: {
-    fontSize: 30,
-    lineHeight: 40,
-    fontWeight: 'bold',
-    color: colors.black
-  }
-});
+
 
 export default Header;

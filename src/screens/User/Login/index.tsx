@@ -1,21 +1,11 @@
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import { useState } from 'react';
-import React from 'react';
-
+import React, { useState } from 'react';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { loginUser } from '../../../services/user/login';
 import { UserLogin } from '../../../types/userLoginDTO';
 import { styles } from '../styles';
 
-
-class Login extends React.Component {
-
-  render() {
-    const [login, setLogin] = useState('');
+const Login = () => {
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
@@ -62,7 +52,6 @@ class Login extends React.Component {
       </View>
     </View>
   );
-  }
-}
+};
 
 export default Login;

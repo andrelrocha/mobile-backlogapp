@@ -10,9 +10,14 @@ export const styles = StyleSheet.create({
     paddingBottom: 200
   },
   title: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 20,
+    color: colors.black
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 20,
     color: colors.black
   },
   input: {
