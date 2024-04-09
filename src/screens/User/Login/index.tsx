@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { loginUser } from '../../../services/user/login';
 import { UserLogin } from '../../../types/userLoginDTO';
 import { styles } from '../styles';
@@ -8,12 +8,19 @@ const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
+  async function handleLogin() {
     const userData: UserLogin = {
       login,
       password
     };
-    loginUser(userData);
+
+    try {
+      await loginUser(userData);
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      Alert.alert('Erro', 'Ocorreu um erro ao logar na sua conta. Por favor, tente novamente.');
+    }
+
   };
 
   return (

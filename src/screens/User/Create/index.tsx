@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import MaskInput, { Masks } from 'react-native-mask-input';
 import { styles } from "../styles";
+import { UserCreate } from "../../../types/userCreateDTO";
+import { createUser } from "../../../services/user/create";
 
 function Create() {
   const [login, setLogin] = useState('');
@@ -10,6 +12,27 @@ function Create() {
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [birthday, setBirthday] = useState('');
+
+  const formattedBirthday = birthday.split('/').reverse().join('-');
+
+  async function handleCreateUser() {
+    const userData: UserCreate = {
+      login,
+      password,
+      name,
+      cpf,
+      phone,
+      birthday: formattedBirthday
+    };
+    
+    try {
+      const userReturn = await createUser(userData);
+      Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
+    } catch (error) {
+      console.error('Erro ao criar usuário:', error);
+      Alert.alert('Erro', 'Ocorreu um erro ao criar a conta. Por favor, tente novamente.');
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -33,6 +56,7 @@ function Create() {
         value={cpf}
         onChangeText={(masked, unmasked) => setCpf(masked)}
         mask={Masks.BRL_CPF}
+        keyboardType="phone-pad"
       />
       <MaskInput
         placeholder="Digite seu telefone"
@@ -62,8 +86,11 @@ function Create() {
         placeholder="Digite sua senha"
         value={password}
         onChangeText={setPassword}
-        secureTextEntry
+        secureTextEntry={true}
       />
+      <TouchableOpacity style={[styles.smallButtonGreen, styles.buttonCadastro]}>
+          <Text style={styles.smallButtonText} onPress={handleCreateUser}>Cadastre-se</Text>
+        </TouchableOpacity>
     </View>
   );
 }

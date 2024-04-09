@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    paddingBottom: 200
+    paddingVertical: 200
   },
   title: {
     fontSize: 32,
@@ -65,6 +65,10 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.redWeak,
     marginLeft: 10
+  },
+  buttonCadastro: {
+    backgroundColor: colors.greenStrong,
+    marginTop: 10
   },
   smallButtonText: {
     color: '#fff',

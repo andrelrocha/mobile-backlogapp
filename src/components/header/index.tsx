@@ -2,7 +2,6 @@
 import React from 'react';
 import { Text, Image, View, StyleSheet } from 'react-native';
 import logo from '../../assets/controller-xbox.png';
-import { colors } from '../../utils/colors';
 import { styles } from './styles';
 
 class Header extends React.Component {
