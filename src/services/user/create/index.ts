@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
-import { UserCreate } from '../../../types/userCreateDTO';
-import { UserReturn } from '../../../types/userReturnDTO';
+import { UserCreate } from '../../../types/user/userCreateDTO';
+import { UserReturn } from '../../../types/user/userReturnDTO';
 import { ApiManager } from '../../../utils/API-axios/ApiManager';
 
 export const createUser = async (userData: UserCreate) => {

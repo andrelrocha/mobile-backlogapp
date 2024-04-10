@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User } from '../../../types/userLoginDTO';
+import { User } from '../../../types/user/userLoginDTO';
 import { ApiManager } from '../../../utils/API-axios/ApiManager';
 import { Alert } from 'react-native';
 

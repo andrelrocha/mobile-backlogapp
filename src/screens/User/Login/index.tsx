@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { loginUser } from '../../../services/user/login';
-import { UserLogin } from '../../../types/userLoginDTO';
+import { UserLogin } from '../../../types/user/userLoginDTO';
 import { styles } from '../styles';
 import useUserLogin from '../../../hooks/user/useUserLogin';
 
@@ -14,18 +14,11 @@ const Login = () => {
       password
     };
 
-    try {
-      const status = await loginUser(userData);
-      if (status) {
-        Alert.alert('Sucesso', 'Usuário logado com sucesso!');
-        //trocar para a tela de home
-      }
-      
-    } catch (error) {
-      console.error('Erro ao fazer login:', error);
-      Alert.alert('Erro', 'Ocorreu um erro ao logar na sua conta. Por favor, tente novamente.');
+    const status = await loginUser(userData);
+    if (status) {
+      Alert.alert('Sucesso', 'Usuário logado com sucesso!');
+      //trocar para a tela de home
     }
-
   };
 
   return (

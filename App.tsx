@@ -2,19 +2,21 @@ import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 //import Home from './src/screens/Home';
 //import Login from './src/screens/User/Login';
-import Create from './src/screens/User/Create';
-import { styles } from './styles';	
+//import Create from './src/screens/User/Create';
+//import ListUser from './src/screens/User/ListUser';
 import Header from './src/components/header';
-import ListUser from './src/screens/User/ListUser';
+import ListAllGames from './src/screens/Games/ListAll';
+import { styles } from './styles';	
 
 function App() {
   return (
     <View style={styles.body}>
       <SafeAreaView>
-        <Header />
-        <ListUser />
+        {/*<Header /> */}
+        {/* <ListUser /> */}
         {/* <Login /> */}
-        <Create />
+        { /*<Create /> */}
+        <ListAllGames />
       </SafeAreaView>
     </View>
   );

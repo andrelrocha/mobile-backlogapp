@@ -3,7 +3,7 @@ import { Alert, Button, Text, TextInput, TouchableOpacity, View } from "react-na
 import MaskInput, { Masks } from 'react-native-mask-input';
 import DatePicker from "react-native-date-picker";
 import { styles } from "../styles";
-import { UserCreate } from "../../../types/userCreateDTO";
+import { UserCreate } from "../../../types/user/userCreateDTO";
 import { createUser } from "../../../services/user/create";
 import useUserCreation from "../../../hooks/user/useUserCreation";
 
@@ -31,15 +31,11 @@ function Create() {
       birthday: formattedBirthdayApi
     };
     
-    try {
-      const userReturn = await createUser(userData);
-      if (userReturn !== null) {
-        Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
-        //trocar para a tela de login
-      }
-    } catch (error) {
-      console.error('Erro ao criar usuário:', error);
-      Alert.alert('Erro', 'Ocorreu um erro ao criar a conta. Por favor, tente novamente.');
+    const userReturn = await createUser(userData);
+      
+    if (userReturn !== null) {
+      Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
+      //trocar para a tela de login
     }
   }
 
