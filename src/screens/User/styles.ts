@@ -5,9 +5,8 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
     width: '100%',
-    paddingVertical: 200
+    paddingTop: 60
   },
   title: {
     fontSize: 32,

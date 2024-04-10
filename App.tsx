@@ -4,12 +4,13 @@ import { SafeAreaView, View } from 'react-native';
 //import Login from './src/screens/User/Login';
 import Create from './src/screens/User/Create';
 import { styles } from './styles';	
+import Header from './src/components/header';
 
 function App() {
   return (
     <View style={styles.body}>
       <SafeAreaView>
-        {/* <Home /> */}
+        <Header />
         {/* <Login /> */}
         <Create />
       </SafeAreaView>
