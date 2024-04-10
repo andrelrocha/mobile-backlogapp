@@ -3,10 +3,10 @@ import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { loginUser } from '../../../services/user/login';
 import { UserLogin } from '../../../types/userLoginDTO';
 import { styles } from '../styles';
+import useUserLogin from '../../../hooks/user/useUserLogin';
 
 const Login = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const { login, setLogin, password, setPassword } = useUserLogin();
 
   async function handleLogin() {
     const userData: UserLogin = {
@@ -15,7 +15,12 @@ const Login = () => {
     };
 
     try {
-      await loginUser(userData);
+      const status = await loginUser(userData);
+      if (status) {
+        Alert.alert('Sucesso', 'Usuário logado com sucesso!');
+        //trocar para a tela de home
+      }
+      
     } catch (error) {
       console.error('Erro ao fazer login:', error);
       Alert.alert('Erro', 'Ocorreu um erro ao logar na sua conta. Por favor, tente novamente.');

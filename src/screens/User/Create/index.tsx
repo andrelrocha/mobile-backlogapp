@@ -5,21 +5,20 @@ import DatePicker from "react-native-date-picker";
 import { styles } from "../styles";
 import { UserCreate } from "../../../types/userCreateDTO";
 import { createUser } from "../../../services/user/create";
+import useUserCreation from "../../../hooks/user/useUserCreation";
 
 function Create() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [phone, setPhone] = useState('');
-  const [birthday, setBirthday] = useState(new Date());
-  const [birthdaySelected, setBirthdaySelected] = useState(false);
-  const [open, setOpen] = useState(false)
-
-  const formattedMonth = String(birthday.getMonth() + 1).padStart(2, '0');
-  const formattedDay = String(birthday.getDate()).padStart(2, '0');
-  const formattedBirthdayApi = `${birthday.getFullYear()}-${formattedMonth}-${formattedDay}`;
-  const formattedBirthday = `${formattedDay}/${formattedMonth}/${birthday.getFullYear()}`;
+  const {
+    login, setLogin,
+    password, setPassword,
+    name, setName,
+    cpf, setCpf,
+    phone, setPhone,
+    birthday, setBirthday,
+    birthdaySelected, setBirthdaySelected,
+    open, setOpen,
+    formattedBirthday, formattedBirthdayApi
+  } = useUserCreation();
 
 
   async function handleCreateUser() {
@@ -34,7 +33,10 @@ function Create() {
     
     try {
       const userReturn = await createUser(userData);
-      Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
+      if (userReturn !== null) {
+        Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
+        //trocar para a tela de login
+      }
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
       Alert.alert('Erro', 'Ocorreu um erro ao criar a conta. Por favor, tente novamente.');
