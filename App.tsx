@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
-//import Home from './src/screens/Home';
+import Home from './src/screens/Home';
 //import Login from './src/screens/User/Login';
 //import Create from './src/screens/User/Create';
 //import ListUser from './src/screens/User/ListUser';
@@ -13,10 +13,11 @@ function App() {
     <View style={styles.body}>
       <SafeAreaView>
         <Header />
+        <Home />
         {/* <ListUser /> */}
         {/* <Login /> */}
         { /*<Create /> */}
-        <ListAllGames />
+        {/* <ListAllGames /> */}
       </SafeAreaView>
     </View>
   );

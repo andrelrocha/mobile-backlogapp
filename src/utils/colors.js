@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export const colors = {
   blue: '#87CEEB',
   green: '#98FB98',
