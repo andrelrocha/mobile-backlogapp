@@ -5,7 +5,10 @@ export const styles = StyleSheet.create({
     container: {
         height: "100%",
         width: '100%',
-        paddingTop: 60,
+        paddingTop: 15,
+    },
+    scrollContainer: {
+        flexGrow: 1,
     },
     title: {
         fontSize: 32,

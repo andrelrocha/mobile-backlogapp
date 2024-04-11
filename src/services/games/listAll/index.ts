@@ -1,12 +1,10 @@
 import { Alert } from 'react-native';
 import { ApiManager } from '../../../utils/API-axios/ApiManager';
-import GameReturn from '../../../types/games/gameReturnDTO';
+import GameReturn from '../../../types/games/gameReturnDTO'
 
 export const listAllGames = async (params: string) => {
     try {
-        console.log('Listando jogos...');
-
-        const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmRyZSIsImlzcyI6ImFuZHJlIHJvY2hhIiwiaWQiOjEsImV4cCI6MTcxMjc3Mzk1NX0.oA98oQJU-YqQJ4cRod3Gla5WW57smRMD72cMcpE0nuI";
+        const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmRyZSIsImlzcyI6ImFuZHJlIHJvY2hhIiwiaWQiOjEsImV4cCI6MTcxMjg1MTQ5OH0.r266WRbXUwtufd9V18m01xOlrQfmAt3fpdTvLkGj-Hw";
         const headers = {
             'Authorization': `Bearer ${token}`
         }

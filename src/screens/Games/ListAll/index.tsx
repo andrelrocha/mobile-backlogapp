@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, SectionList } from "react-native";
 import useGamesListAll from "../../../hooks/games/useGamesListAll";
 import GameReturn from "../../../types/games/gameReturnDTO";
 import { styles } from "./../styles";
@@ -19,13 +19,19 @@ export default function ListAllGames() {
         );
     };
 
+    // Renderizar cabeçalho
+    const renderHeader = () => (
+        <Text style={styles.title}>Lista de Jogos</Text>
+    );
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Lista de Jogos</Text>
-            <FlatList
-                data={games}
-                renderItem={renderItem}
+            <SectionList
+                sections={[{ title: "", data: games }]}
+                renderItem={({ item }) => renderItem({ item })}
+                renderSectionHeader={() => null}
                 keyExtractor={(item) => item.id.toString()}
+                ListHeaderComponent={renderHeader}
             />
         </View>
     );
