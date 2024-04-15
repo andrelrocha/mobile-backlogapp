@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const ApiManager = axios.create({
-    baseURL: "https://09c4-2804-248-fb33-4000-6d00-948-1d40-9b1.ngrok-free.app",
+    baseURL: "https://49df-2804-14c-de86-851f-a92e-ed0c-7cbc-f06c.ngrok-free.app",
     responseType: "json"
 });

@@ -1,35 +1,49 @@
-import { Alert } from 'react-native';
 import { UserCreate } from '../../../types/user/userCreateDTO';
 import { UserReturn } from '../../../types/user/userReturnDTO';
 import { ApiManager } from '../../../utils/API-axios/ApiManager';
+import { loginUser } from '../login';
 
 export const createUser = async (userData: UserCreate) => {
+  const endpoint = '/user/create';
+
   try {
-    const response = await ApiManager.post('/user/create', userData)
+    const response = await ApiManager.post(endpoint, userData)
       .then((response) => {
-        return response.data;
+        if (response.data) {
+          const userReturn: UserReturn = {
+            birthday: response.data.birthday,
+            cpf: response.data.cpf,
+            id: response.data.id,
+            login: response.data.login,
+            name: response.data.name,
+            phone: response.data.phone,
+          };
+
+          try {
+            const loginData = {
+              login: userData.login,
+              password: userData.password,
+            };
+  
+            loginUser(loginData);
+          } catch (error: any) {
+            console.error('Erro ao logar o usuário após criação:', error.response?.data);
+            throw error;
+          }
+  
+        return userReturn;
+        }
       })
       .catch((error) => {
+        console.log(error.response?.data);
         console.error('Erro ao criar usuário:', error);
-        Alert.alert('Erro', 'Ocorreu um erro ao criar um usuário. Por favor, tente novamente.');
-      });;
+        throw error;
+      });
 
-    if (response.data) {
-      const userReturn: UserReturn = {
-        id: response.data.id,
-        login: response.data.login,
-        name: response.data.name,
-        cpf: response.data.cpf,
-        phone: response.data.phone,
-        birthday: response.data.birthday
-      };
-
-      return userReturn;
-    } else {
-      throw new Error('Não foi possível criar o usuário. Resposta da API vazia.');
-    }
-  } catch (error) {
-    console.error('Erro ao criar usuário:', error);
+    return response;
+  } catch (error: any) {
+    console.log(error);
+    console.error('Erro ao criar um usuário:', error.response?.data);
     throw error;
   }
 };

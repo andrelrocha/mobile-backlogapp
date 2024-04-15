@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, SectionList } from "react-native";
+import { View, Text, SectionList } from "react-native";
 import useGamesListAll from "../../../hooks/games/useGamesListAll";
 import GameReturn from "../../../types/games/gameReturnDTO";
 import { styles } from "./../styles";

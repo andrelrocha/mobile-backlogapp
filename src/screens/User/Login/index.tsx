@@ -9,15 +9,24 @@ const Login = () => {
   const { login, setLogin, password, setPassword } = useUserLogin();
 
   async function handleLogin() {
+    if (login === '' || password === '') {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
     const userData: UserLogin = {
       login,
       password
     };
 
-    const status = await loginUser(userData);
-    if (status) {
-      Alert.alert('Sucesso', 'Usuário logado com sucesso!');
-      //trocar para a tela de home
+    try {
+      const status = await loginUser(userData);
+      if (status) {
+        Alert.alert('Sucesso', 'Usuário logado com sucesso!');
+        //trocar para a tela de home
+      }
+    } catch (error: any) {
+      Alert.alert('Erro', 'Ocorreu um erro ao logar na sua conta: ' + error.response?.data || 'Erro desconhecido');
     }
   };
 

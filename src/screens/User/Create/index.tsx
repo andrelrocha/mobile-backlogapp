@@ -22,6 +22,11 @@ function Create() {
 
 
   async function handleCreateUser() {
+    if (login === '' || password === '' || name === '' || cpf === '' || phone === '' || birthday.toString() === '') {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
     const userData: UserCreate = {
       login,
       password,
@@ -30,12 +35,13 @@ function Create() {
       phone,
       birthday: formattedBirthdayApi
     };
-    
-    const userReturn = await createUser(userData);
-      
-    if (userReturn !== null) {
-      Alert.alert('Conta criada!', `Bem-vindo, ${userReturn.name}`);
-      //trocar para a tela de login
+
+    try {
+      const userReturn = await createUser(userData);
+      Alert.alert('Conta criada!', `Bem-vindo, ${userReturn?.name}`);
+      //troca pra tela de login
+    } catch (error: any) {
+      Alert.alert('Erro', 'Ocorreu um erro ao criar um usuário: ' + error.response?.data || 'Erro desconhecido');
     }
   }
 
