@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Alert, Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Alert, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import MaskInput, { Masks } from 'react-native-mask-input';
 import DatePicker from "react-native-date-picker";
 import { styles } from "../styles";
@@ -45,81 +45,85 @@ function Create() {
     }
   }
 
+  //const headerHeight = useHeaderHeight();
+  
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Bem vindo ao Backlog App
-      </Text>
+      <KeyboardAvoidingView 
+       behavior="padding"
+       style={styles.container}>
+        <Text style={styles.title}>
+          Bem vindo ao Backlog App
+        </Text>
 
-      <Text style={styles.subtitle}>
-        Complete os campos abaixo para se cadastrar
-      </Text>
+        <Text style={styles.subtitle}>
+          Complete os campos abaixo para se cadastrar
+        </Text>
 
-      <TextInput
-        placeholder="Digite seu nome"
-        style={styles.input}
-        value={name}
-        onChangeText={setName}
-      />
-      <MaskInput
-        placeholder="Digite seu CPF"
-        style={styles.input}
-        value={cpf}
-        onChangeText={(masked, unmasked) => setCpf(masked)}
-        mask={Masks.BRL_CPF}
-        keyboardType="phone-pad"
-      />
-      <MaskInput
-        placeholder="Digite seu telefone"
-        style={styles.input}
-        value={phone}
-        onChangeText={(masked, unmasked) => setPhone(masked)}
-        mask={['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
-        keyboardType="phone-pad"
-      />
+        <TextInput
+          placeholder="Digite seu nome"
+          style={styles.input}
+          value={name}
+          onChangeText={setName}
+        />
+        <MaskInput
+          placeholder="Digite seu CPF"
+          style={styles.input}
+          value={cpf}
+          onChangeText={(masked, unmasked) => setCpf(masked)}
+          mask={Masks.BRL_CPF}
+          keyboardType="phone-pad"
+        />
+        <MaskInput
+          placeholder="Digite seu telefone"
+          style={styles.input}
+          value={phone}
+          onChangeText={(masked, unmasked) => setPhone(masked)}
+          mask={['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
+          keyboardType="phone-pad"
+        />
 
-      <TextInput
-        placeholder="Digite sua data de nascimento"
-        style={styles.input}
-        value={birthdaySelected ? formattedBirthday : ''}
-        onPressIn={() => setOpen(true)}
-      />
+        <TextInput
+          placeholder="Digite sua data de nascimento"
+          style={styles.input}
+          value={birthdaySelected ? formattedBirthday : ''}
+          onPressIn={() => setOpen(true)}
+        />
 
-      <DatePicker
-        modal
-        open={open}
-        date={birthday}
-        onConfirm={(date) => {
-            setOpen(false);
-            setBirthday(date);
-            setBirthdaySelected(true);
+        <DatePicker
+          modal
+          open={open}
+          date={birthday}
+          onConfirm={(date) => {
+              setOpen(false);
+              setBirthday(date);
+              setBirthdaySelected(true);
+            }
           }
-        }
-        onCancel={() => {
-          setOpen(false)
-        }}
-        mode="date"
-      />
+          onCancel={() => {
+            setOpen(false)
+          }}
+          mode="date"
+        />
 
-      <TextInput
-        placeholder="Digite seu login (email)"
-        style={styles.input}
-        value={login}
-        onChangeText={setLogin}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Digite sua senha"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry={true}
-      />
-      <TouchableOpacity style={[styles.smallButtonGreen, styles.buttonCadastro]}>
-          <Text style={styles.smallButtonText} onPress={handleCreateUser}>Cadastre-se</Text>
-        </TouchableOpacity>
-    </View>
+        <TextInput
+          placeholder="Digite seu login (email)"
+          style={styles.input}
+          value={login}
+          onChangeText={setLogin}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Digite sua senha"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+        />
+        <TouchableOpacity style={[styles.smallButtonGreen, styles.buttonCadastro]}>
+            <Text style={styles.smallButtonText} onPress={handleCreateUser}>Cadastre-se</Text>
+          </TouchableOpacity>
+      </KeyboardAvoidingView>
   );
 }
 
