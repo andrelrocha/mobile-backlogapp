@@ -9,11 +9,11 @@ npx react-native run-android
 https://reactnative.dev/docs/environment-setup
 ””””””””””””””””””””””””””””
 
-tem que criar variavel de ambiente ANDROID_HOME
-tem que ter o jdk instalado como path JAVA_HOME
+tem que criar variavel de ambiente ANDROID_HOME (C:\Users\andre.rocha\AppData\Local\Android\Sdk) 
+tem que ter o jdk instalado como path JAVA_HOME (C:\Program Files\Microsoft\jdk-17.0.10.7-hotspot\)
 tem que ter o node instalado
 tem que adicionar a variavel de ambiente do user com o 
-"path" para o endereco de ANDROID_HOME com "/platform-tools "
+"path" para o endereco de ANDROID_HOME com "/platform-tools " (C:\Users\andre.rocha\AppData\Local\Android\Sdk\platform-tools)
 
 
 

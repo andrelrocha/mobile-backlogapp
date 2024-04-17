@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.backlogapp"
+    namespace "com.geekcatalog"
     defaultConfig {
-        applicationId "com.backlogapp"
+        applicationId "com.geekcatalog"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,4 +1,4 @@
-package com.backlogapp
+package com.geekcatalog
 
 import android.app.Application
 import com.facebook.react.PackageList
