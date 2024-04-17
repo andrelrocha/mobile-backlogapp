@@ -39,7 +39,6 @@ const Login = () => {
         placeholder="Digite seu login"
         value={login}
         onChangeText={setLogin}
-        autoFocus
         autoCapitalize="none"
       />
 

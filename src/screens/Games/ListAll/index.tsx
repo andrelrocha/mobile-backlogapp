@@ -11,15 +11,12 @@ export default function ListAllGames() {
         return (
             <View style={styles.itemContainer}>
                 <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.subText}>Console: {item.console}</Text>
-                <Text style={styles.subText}>Nota: {item.note}</Text>
                 <Text style={styles.subText}>Metacritic: {item.metacritic}</Text>
-                <Text style={styles.subText}>Gênero: {item.genre}</Text>
+                <Text style={styles.subText}>Ano de lançamento: {item.yearOfRelease}</Text>
             </View>
         );
     };
 
-    // Renderizar cabeçalho
     const renderHeader = () => (
         <Text style={styles.title}>Lista de Jogos</Text>
     );

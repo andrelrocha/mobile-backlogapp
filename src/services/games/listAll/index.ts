@@ -1,15 +1,19 @@
 import { Alert } from 'react-native';
 import { ApiManager } from '../../../utils/API-axios/ApiManager';
 import GameReturn from '../../../types/games/gameReturnDTO'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const listAllGames = async (params: string) => {
     try {
-        const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmRyZSIsImlzcyI6ImFuZHJlIHJvY2hhIiwiaWQiOjEsImV4cCI6MTcxMjg1MTQ5OH0.r266WRbXUwtufd9V18m01xOlrQfmAt3fpdTvLkGj-Hw";
+        const token = await AsyncStorage.getItem('auth');
+
+        console.log('Token no console.log:', token);
         const headers = {
             'Authorization': `Bearer ${token}`
         }
 
-        let endpoint = "/finished";
+        //FALTA IMPLEMENTAR NO BACKEND
+        let endpoint = "/games/getall";
         
         if (!(params === '' || params === undefined)) {
             endpoint += '/' + params;
